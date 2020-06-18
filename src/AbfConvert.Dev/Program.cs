@@ -18,10 +18,10 @@ namespace AbfConvert.Dev
                 for (int i = 0; i < abf.SweepCount; i++)
                 {
                     sweepValues[i] = abf.GetSweep(i);
-                    Console.WriteLine($"Sweep {i} has {sweepValues.Length} points");
+                    Console.WriteLine($"Sweep {i + 1} has {sweepValues[i].Length:N0} points");
                 }
 
-                CSV.SaveJaggedArray(sweepValues, fname + ".csv");
+                Export.CSV(sweepValues, abfPath.Replace(".abf", ".csv"));
             }
         }
     }
