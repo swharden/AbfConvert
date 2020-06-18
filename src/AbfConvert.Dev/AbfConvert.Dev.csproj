@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ScottPlot" Version="4.0.35" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AbfConvert\AbfConvert.csproj" />
+  </ItemGroup>
+
+</Project>

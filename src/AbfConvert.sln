@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbfConvert.GUI", "AbfConvert.GUI\AbfConvert.GUI.csproj", "{4993EED4-988B-4EA7-B9BF-25CD98E72C6C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbfConvert", "AbfConvert\AbfConvert.csproj", "{9D08B429-23EE-4670-8517-1D84D2EA05F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbfConvert.Dev", "AbfConvert.Dev\AbfConvert.Dev.csproj", "{84FF55EC-C259-4D11-AFC9-086C44B93E17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{4993EED4-988B-4EA7-B9BF-25CD98E72C6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4993EED4-988B-4EA7-B9BF-25CD98E72C6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4993EED4-988B-4EA7-B9BF-25CD98E72C6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D08B429-23EE-4670-8517-1D84D2EA05F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D08B429-23EE-4670-8517-1D84D2EA05F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D08B429-23EE-4670-8517-1D84D2EA05F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D08B429-23EE-4670-8517-1D84D2EA05F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84FF55EC-C259-4D11-AFC9-086C44B93E17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84FF55EC-C259-4D11-AFC9-086C44B93E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84FF55EC-C259-4D11-AFC9-086C44B93E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84FF55EC-C259-4D11-AFC9-086C44B93E17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
