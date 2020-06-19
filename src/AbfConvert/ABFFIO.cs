@@ -6,6 +6,8 @@ namespace AbfConvert
     public static class ABFFIO
     {
         // NOTE: These aren't all methods. I just impliment ones I need as I need them. See ABFHelp.pdf for details.
+        
+        // TODO: fix the Int32 to be UInt32 where necessary
 
         [DllImport("ABFFIO.dll", CharSet = CharSet.Ansi)]
         public static extern bool ABF_IsABFFile(String szFileName, ref Int32 pnDataFormat, ref Int32 pnError);
@@ -30,6 +32,12 @@ namespace AbfConvert
 
         [DllImport("ABFFIO.dll", CharSet = CharSet.Ansi)]
         public static extern bool ABFH_GetEpochLimits(ref ABFFileHeader pFH, Int32 nADCChannel, Int32 uDACChannel, Int32 dwEpisode, Int32 nEpoch, ref UInt32 puEpochStart, ref UInt32 puEpochEnd, ref Int32 pnError);
+
+        [DllImport("ABFFIO.dll", CharSet = CharSet.Ansi)]
+        public static extern bool ABF_GetStartTime(int nFile, ref ABFFileHeader pFH, int nChannel, Int32 dwSweep, ref float pfStartTime, ref int pnError);
+
+        [DllImport("ABFFIO.dll", CharSet = CharSet.Ansi)]
+        public static extern bool ABF_SynchCountFromEpisode(int hFile, ref ABFFileHeader pFH, Int32 dwEpisode, ref Int32 pdwSynchCount, ref int pnError);
 
         // These constants are used by the ABF structs
         private const int ABF_ADCCOUNT = 16; // number of ADC channels supported.

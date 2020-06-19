@@ -21,7 +21,9 @@ namespace AbfConvert.Dev
                     Console.WriteLine($"Sweep {i + 1} has {sweepValues[i].Length:N0} points");
                 }
 
-                Export.CSV(sweepValues, abfPath.Replace(".abf", ".csv"));
+                Export.CSV(sweepValues, abfPath.Replace(".abf", ".csv"), abf.SampleRate, abf.SweepStartTimes);
+                Export.TSV(sweepValues, abfPath.Replace(".abf", ".tsv"), abf.SampleRate, abf.SweepStartTimes);
+                Export.ATF(sweepValues, abfPath.Replace(".abf", ".atf"), abf.SampleRate, abf.SweepStartTimes);
             }
         }
     }
