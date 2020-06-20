@@ -16,7 +16,7 @@ namespace AbfConvert
             string[,] txt = new string[columns + 1, rows];
             for (int columnIndex = 0; columnIndex < columns; columnIndex++)
                 for (int rowIndex = 0; rowIndex < jagged[columnIndex].Length; rowIndex++)
-                    txt[columnIndex, rowIndex] = $"{jagged[columnIndex][rowIndex]}";
+                    txt[columnIndex + 1, rowIndex] = $"{jagged[columnIndex][rowIndex]}";
             return txt;
         }
 
@@ -67,7 +67,7 @@ namespace AbfConvert
 
             // second line indicates header length and data width
             int headerLinesAfterThis = 2;
-            int dataColumnCount = valuesText.GetLength(0) + 1;
+            int dataColumnCount = data.Length + 1;
             sb.AppendLine($"{headerLinesAfterThis}\t{dataColumnCount}");
 
             // extra line 1 = start time for each sweep
