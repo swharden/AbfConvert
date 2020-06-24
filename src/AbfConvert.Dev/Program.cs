@@ -101,9 +101,9 @@ namespace AbfConvert.Dev
             sb.AppendLine("     output :: path to the output file or folder");
             sb.AppendLine("     format :: CSV, TSV, or ATF");
             sb.AppendLine();
-            sb.AppendLine("    Example :: AbfConvert.exe sample.abf sample.csv CSV");
+            sb.AppendLine("    Example :: AbfConverter.exe sample.abf sample.csv CSV");
             sb.AppendLine();
-            sb.AppendLine("    Example :: AbfConvert.exe ./folderIn/ ./folderOut/ CSV");
+            sb.AppendLine("    Example :: AbfConverter.exe ./folderIn/ ./folderOut/ CSV");
             sb.AppendLine();
             Console.WriteLine(sb); ;
         }
