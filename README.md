@@ -29,3 +29,9 @@
 
     Example :: AbfConvert.exe ./folderIn/ ./folderOut/ CSV
 ```
+
+### Download
+
+* **[AbfConvert-1.0.zip](https://github.com/swharden/AbfConvert/releases/download/1.0/AbfConvert-1.0.zip)**
+
+* _This program requires the [.NET Framework Runtime](https://dotnet.microsoft.com/download)_
