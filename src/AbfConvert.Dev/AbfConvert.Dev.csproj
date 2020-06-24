@@ -4,11 +4,8 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net472</TargetFramework>
     <PlatformTarget>x86</PlatformTarget>
+    <AssemblyName>AbfConverter</AssemblyName>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="ScottPlot" Version="4.0.35" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AbfConvert\AbfConvert.csproj" />
