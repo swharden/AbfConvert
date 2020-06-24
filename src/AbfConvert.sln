@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbfConvert.GUI", "AbfConvert.GUI\AbfConvert.GUI.csproj", "{4993EED4-988B-4EA7-B9BF-25CD98E72C6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbfConvert", "AbfConvert\AbfConvert.csproj", "{9D08B429-23EE-4670-8517-1D84D2EA05F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbfConvert", "AbfConvert\AbfConvert.csproj", "{9D08B429-23EE-4670-8517-1D84D2EA05F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbfConvert.Dev", "AbfConvert.Dev\AbfConvert.Dev.csproj", "{84FF55EC-C259-4D11-AFC9-086C44B93E17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbfConvert.Dev", "AbfConvert.Dev\AbfConvert.Dev.csproj", "{84FF55EC-C259-4D11-AFC9-086C44B93E17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
