@@ -27,7 +27,7 @@
 
     Example :: AbfConverter.exe sample.abf sample.csv CSV
 
-    Example :: AbfConverter.exe ./folderIn/ ./folderOut/ CSV
+    Example :: AbfConverter.exe C:\folderIn C:\folderOut CSV
 ```
 
 ### Download
