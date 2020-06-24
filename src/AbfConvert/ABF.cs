@@ -33,25 +33,34 @@ namespace AbfConvert
             sweepBuffer = new float[SweepPointCount];
 
             // store useful ABF information at the class level
-            SampleRate = (int)(1e6 / header.fADCSequenceInterval);
+            SampleRate = (int)(1e6 / header.fADCSequenceInterval / header.nADCNumChannels);
 
-            // start time for each sweep
             SweepStartTimes = new double[SweepCount];
-            for (int i = 0; i < SweepCount; i++)
+            if (header.fSynchTimeUnit > 0)
             {
-                int sweepNumber = i + 1;
-                Int32 syncCount = 0;
-                ABFFIO.ABF_SynchCountFromEpisode(fileHandle, ref header, sweepNumber, ref syncCount, ref errorCode);
-                if (errorCode != 0)
-                    throw new ArgumentException($"ABFFIO failed to determine sweep time");
-                //double sweepStartTimeMsec = (double)syncCount / (header.fADCSequenceInterval / header.nADCNumChannels);
-                SweepStartTimes[i] = (double)syncCount / SampleRate;
+                // fixed-length sweeps
+                int sweepPointCount = header.lActualAcqLength / header.lActualEpisodes / header.nADCNumChannels;
+                for (int i = 0; i < SweepCount; i++)
+                    SweepStartTimes[i] = (double)(sweepPointCount * i) / SampleRate;
+            }
+            else
+            {
+                // variable length sweeps
+                for (int i = 0; i < SweepCount; i++)
+                {
+                    int sweepNumber = i + 1;
+                    Int32 syncCount = 0;
+                    ABFFIO.ABF_SynchCountFromEpisode(fileHandle, ref header, sweepNumber, ref syncCount, ref errorCode);
+                    if (errorCode != 0)
+                        throw new ArgumentException($"ABFFIO failed to determine sweep time");
+                    SweepStartTimes[i] = (double)syncCount / SampleRate;
+                }
             }
         }
 
         public override string ToString()
         {
-            return $"ABF file with {SweepCount} sweeps";
+            return $"ABF file with {SweepCount} sweeps at {SampleRate} Hz";
         }
 
         public void Dispose()
