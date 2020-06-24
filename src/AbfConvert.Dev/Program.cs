@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 
@@ -9,7 +10,18 @@ namespace AbfConvert.Dev
     {
         static void Main(string[] args)
         {
-            if (args.Length != 2)
+            Version version = System.Reflection.Assembly.GetAssembly(typeof(ABF)).GetName().Version;
+            Console.WriteLine($"AbfConvert {version.Major}.{version.Minor}\n");
+
+            if (args.Length == 0)
+            {
+                Console.WriteLine($"ERROR: THIS PROGRAM MUST BE RUN FROM THE COMMAND PROMPT.");
+                ShowHelp();
+                Console.ReadLine();
+                return;
+            }
+
+            if (args.Length != 3)
             {
                 Console.WriteLine($"ERROR: invalid arguments");
                 ShowHelp();
@@ -17,21 +29,42 @@ namespace AbfConvert.Dev
             }
 
             string pathIn = System.IO.Path.GetFullPath(args[0]);
-            if (!System.IO.File.Exists(pathIn))
-            {
-                Console.WriteLine($"ERROR: file does not exist ({pathIn})");
-                return;
-            }
-
             string pathOut = System.IO.Path.GetFullPath(args[1]);
-            string pathOutFolder = System.IO.Path.GetDirectoryName(pathOut);
-            if (!System.IO.Directory.Exists(pathOutFolder))
+            string format = args[2].Replace(".", "").ToUpper();
+            string[] supportedFormats = { "CSV", "TSV", "ATF" };
+            if (!supportedFormats.Contains(format))
             {
-                Console.WriteLine($"ERROR: output folder does not exist ({pathOutFolder})");
+                Console.WriteLine($"ERROR: invalid format ({format})");
+                ShowHelp();
                 return;
             }
 
-            Console.WriteLine($"Reading {System.IO.Path.GetFileName(pathOut)}...");
+            if (System.IO.Directory.Exists(pathIn))
+            {
+                if (!System.IO.Directory.Exists(pathOut))
+                    System.IO.Directory.CreateDirectory(pathOut);
+
+                foreach (string abfPath in System.IO.Directory.GetFiles(pathIn, "*.abf"))
+                    Convert(abfPath, $"{pathOut}/{System.IO.Path.GetFileNameWithoutExtension(abfPath)}.{format.ToLower()}", format);
+
+                Console.WriteLine($"ABF conversions complete.");
+            }
+            else if (System.IO.File.Exists(pathIn))
+            {
+                Convert(pathIn, pathOut, format);
+                Console.WriteLine($"ABF conversion complete.");
+            }
+            else
+            {
+                Console.WriteLine($"ERROR: invalid input path ({pathIn})");
+                ShowHelp();
+                return;
+            }
+        }
+
+        static void Convert(string pathIn, string pathOut, string format)
+        {
+            Console.WriteLine($"Reading data from {System.IO.Path.GetFileName(pathIn)}...");
 
             using (var abf = new ABF(pathIn))
             {
@@ -41,45 +74,36 @@ namespace AbfConvert.Dev
                 for (int i = 0; i < abf.SweepCount; i++)
                     sweepValues[i] = abf.GetSweep(i);
 
-                Console.WriteLine($"Exporting {System.IO.Path.GetFileName(pathOut)}...");
+                Console.WriteLine($"Creating {System.IO.Path.GetFileName(pathOut)}...");
 
-                if (pathOut.EndsWith(".csv", StringComparison.OrdinalIgnoreCase))
-                {
+                if (format == "CSV")
                     Export.CSV(sweepValues, pathOut, abf.SampleRate, abf.SweepStartTimes);
-                }
-                else if (pathOut.EndsWith(".tsv", StringComparison.OrdinalIgnoreCase))
-                {
+                else if (format == "TSV")
                     Export.TSV(sweepValues, pathOut, abf.SampleRate, abf.SweepStartTimes);
-                }
-                else if (pathOut.EndsWith(".atf", StringComparison.OrdinalIgnoreCase))
-                {
+                else if (format == "ATF")
                     Export.ATF(sweepValues, pathOut, abf.SampleRate, abf.SweepStartTimes);
-                }
                 else
-                {
-                    Console.WriteLine($"ERROR: output file must end with .csv, .tsv, or .atf");
-                    return;
-                }
-
-                Console.WriteLine($"Conversion complete!");
+                    throw new NotImplementedException($"Unsupported output format {format}");
             }
         }
 
         static void ShowHelp()
         {
-            Version version = System.Reflection.Assembly.GetAssembly(typeof(ABF)).GetName().Version;
             StringBuilder sb = new StringBuilder();
             sb.AppendLine();
-            sb.AppendLine($"AbfConvert {version.Major}.{version.Minor}");
+            sb.AppendLine("------------------------------------------------------------");
+            sb.AppendLine(" AbfConvert :: Convert ABF files to CSV, TSV, or ATF format");
+            sb.AppendLine("------------------------------------------------------------");
             sb.AppendLine();
-            sb.AppendLine("Purpose:");
-            sb.AppendLine("  Converts ABF (ABF1 and ABF2) files to ATF, CSV, or TSV format.");
+            sb.AppendLine("      Usage :: AbfConverter.exe [input] [output] [format]");
             sb.AppendLine();
-            sb.AppendLine("Usage:");
-            sb.AppendLine("  AbfConvert.exe input.abf output.csv");
+            sb.AppendLine("      input :: path to an ABF file or a folder of ABF files");
+            sb.AppendLine("     output :: path to the output file or folder");
+            sb.AppendLine("     format :: CSV, TSV, or ATF");
             sb.AppendLine();
-            sb.AppendLine("Supported output formats:");
-            sb.AppendLine("  .csv, .tsv, .atf");
+            sb.AppendLine("    Example :: AbfConvert.exe sample.abf sample.csv CSV");
+            sb.AppendLine();
+            sb.AppendLine("    Example :: AbfConvert.exe ./folderIn/ ./folderOut/ CSV");
             sb.AppendLine();
             Console.WriteLine(sb); ;
         }
