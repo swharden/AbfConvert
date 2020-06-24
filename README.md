@@ -8,7 +8,7 @@
 
 * **Convert ABF to CSV** for easy analysis in programs like Excel.
 
-* **Convert to ABF to ATF** for analysis in legacy analysis software (e.g., MiniAnalysis) which does not support the latest ABF file formats.
+* **Convert to ABF to ATF** for analysis in legacy analysis software which does not support the latest ABF file formats.
 
 * **Batch convert** entire directories of folders by supplying folders (instead of individual ABF files) as input and output parameters.
 
@@ -25,9 +25,9 @@
      output :: path to the output file or folder
      format :: CSV, TSV, or ATF
 
-    Example :: AbfConvert.exe sample.abf sample.csv CSV
+    Example :: AbfConverter.exe sample.abf sample.csv CSV
 
-    Example :: AbfConvert.exe ./folderIn/ ./folderOut/ CSV
+    Example :: AbfConverter.exe ./folderIn/ ./folderOut/ CSV
 ```
 
 ### Download
