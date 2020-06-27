@@ -4,6 +4,14 @@
 
 ![](data/logo.png)
 
+### Screenshot
+
+![](data/screenshot.png)
+
+### Download
+
+* **[AbfConvert-1.1.zip](https://github.com/swharden/AbfConvert/releases/download/1.1/AbfConvert-1.1.zip)**
+
 ### Features
 
 * **Convert ABF to CSV** for easy analysis in programs like Excel.
@@ -12,26 +20,14 @@
 
 * **Batch convert** entire directories of folders by supplying folders (instead of individual ABF files) as input and output parameters.
 
-### Usage
+### Command Line Utility
+
+A command line utility is also available which may be useful for those interested in automated conversion of ABF files in complex directory structures.
 
 ```
-------------------------------------------------------------
- AbfConvert :: Convert ABF files to CSV, TSV, or ATF format
-------------------------------------------------------------
-
-      Usage :: AbfConverter.exe [input] [output] [format]
-
-      input :: path to an ABF file or a folder of ABF files
-     output :: path to the output file or folder
-     format :: CSV, TSV, or ATF
-
-    Example :: AbfConverter.exe sample.abf sample.csv CSV
-
-    Example :: AbfConverter.exe C:\folderIn C:\folderOut CSV
+AbfConverter.exe [input] [output] [format]
 ```
 
-### Download
-
-* **[AbfConvert-1.0.zip](https://github.com/swharden/AbfConvert/releases/download/1.0/AbfConvert-1.0.zip)**
-
-* _This program requires the [.NET Framework Runtime](https://dotnet.microsoft.com/download)_
+* input: path to an ABF file or a folder of ABF files
+* output: path to the output file or folder
+* format: CSV, TSV, or ATF

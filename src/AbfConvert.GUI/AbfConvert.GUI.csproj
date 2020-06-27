@@ -79,5 +79,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AbfConvert\AbfConvert.csproj">
+      <Project>{9d08b429-23ee-4670-8517-1d84d2ea05f4}</Project>
+      <Name>AbfConvert</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
