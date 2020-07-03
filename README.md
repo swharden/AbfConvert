@@ -5,4 +5,4 @@
 ![](data/screenshot.png)
 
 ### Download at the AbfConvert Website
-https://swharden.com/software/abfConvert/
+https://swharden.com/software/AbfConvert/
