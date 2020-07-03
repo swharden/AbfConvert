@@ -4,5 +4,5 @@
 
 ![](data/screenshot.png)
 
-### Download at the AbfConvert Website
+### Download
 https://swharden.com/software/AbfConvert/
