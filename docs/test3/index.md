@@ -1,0 +1,1 @@
+test3 `index.md` in a subfolder
