@@ -63,7 +63,7 @@ namespace AbfConvert.GUI
                 var abf = new ABF(abfPath);
                 float[][] sweepValues = new float[abf.SweepCount][];
                 for (int j = 0; j < abf.SweepCount; j++)
-                    sweepValues[j] = abf.GetSweep(j);
+                    sweepValues[j] = abf.GetSweep(j, (int)nudChannel.Value);
 
                 if (rbCSV.Checked)
                 {

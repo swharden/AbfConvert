@@ -44,8 +44,11 @@
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnReset = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.nudChannel = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudChannel)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAbout
@@ -210,12 +213,37 @@
             this.panel1.Size = new System.Drawing.Size(554, 211);
             this.panel1.TabIndex = 25;
             // 
+            // nudChannel
+            // 
+            this.nudChannel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudChannel.Location = new System.Drawing.Point(511, 282);
+            this.nudChannel.Maximum = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            this.nudChannel.Name = "nudChannel";
+            this.nudChannel.Size = new System.Drawing.Size(55, 20);
+            this.nudChannel.TabIndex = 26;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(456, 286);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Channel:";
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(578, 332);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.nudChannel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.statusStrip1);
@@ -238,6 +266,7 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudChannel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,6 +290,8 @@
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.NumericUpDown nudChannel;
+        private System.Windows.Forms.Label label4;
     }
 }
 
